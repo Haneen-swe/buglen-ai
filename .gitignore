@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env files (never commit real keys)
+.env
+.env.local
+.env.*.local
+
+# testing
+coverage
+
+# monaco assets are copied from node_modules by scripts/copy-monaco.mjs
+public/monaco/
+
+# vercel
+.vercel
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*

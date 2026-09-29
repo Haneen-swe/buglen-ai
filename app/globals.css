@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --slate: #65777b;
+  --charcoal: #1f3032;
+  --mauve: #c184aa;
+  --plum: #714c67;
+  --burgundy: #6c1f4d;
+  --night: #220913;
+  --offwhite: #f5eef2;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-charcoal text-offwhite antialiased;
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 2px solid var(--mauve);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--plum);
+    color: var(--offwhite);
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-burgundy text-offwhite shadow-card hover:bg-[#7d2559] border border-mauve/30;
+  }
+  .btn-secondary {
+    @apply btn bg-plum/70 text-offwhite border border-mauve/30 hover:bg-plum;
+  }
+  .btn-ghost {
+    @apply btn border border-slate-brand/70 bg-transparent text-offwhite hover:bg-night/60;
+  }
+  .card {
+    @apply rounded-2xl border border-slate-brand/40 bg-night/70 shadow-card;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-mauve;
+  }
+}
+
+/* Monaco line highlights for detected issues */
+.bl-issue-line {
+  background: rgba(108, 31, 77, 0.55);
+}
+.bl-issue-glyph {
+  background: var(--mauve);
+  width: 4px !important;
+  margin-left: 3px;
+  border-radius: 2px;
+}
+
+@keyframes bl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes bl-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+.bl-spinner {
+  animation: bl-spin 0.9s linear infinite;
+}
+.bl-scan {
+  animation: bl-scan 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .bl-spinner,
+  .bl-scan {
+    animation: none;
+  }
+}
