@@ -3,8 +3,8 @@ import { GithubIcon, LinkedinIcon } from "./Icons";
 import { Logo } from "./Logo";
 
 // Placeholder links: replace with your own profiles before publishing.
-const GITHUB_URL = "https://github.com/your-username/buglens-ai";
-const LINKEDIN_URL = "https://www.linkedin.com/in/your-profile";
+const GITHUB_URL = "https://github.com/Haneen-swe";
+const LINKEDIN_URL = "https://www.linkedin.com/in/haneennasser-swe";
 
 export function Footer() {
   return (
