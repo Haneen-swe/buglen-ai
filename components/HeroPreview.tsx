@@ -14,8 +14,7 @@ export function HeroPreview() {
       role="img"
       aria-label="Preview of the BugLens AI analyzer showing a Python function with a missing colon highlighted and an explanation card."
     >
-      <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-burgundy/40 via-plum/20 to-transparent blur-2xl" aria-hidden="true" />
-      <div className="relative overflow-hidden rounded-2xl border border-slate-brand/50 bg-night shadow-card">
+      <div className="relative overflow-hidden rounded-2xl border border-slate-brand/40 bg-night shadow-card">
         <div className="flex items-center gap-2 border-b border-slate-brand/30 px-4 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-slate-brand/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-plum" />

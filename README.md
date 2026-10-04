@@ -70,7 +70,8 @@ buglens-ai/
 ├── components/                   # Navbar, Footer, CodeEditor, AnalysisResult, SeverityBadge, ...
 ├── lib/                          # ai.ts, validation.ts, storage.ts, samples.ts, languages.ts, rateLimit.ts, types.ts
 ├── __tests__/                    # Vitest tests
-├── presentation/                 # presentation.md and slide deck
+├── docs/screenshots/             # README screenshots
+├── scripts/copy-monaco.mjs       # serves Monaco from this site (no CDN)
 ├── .env.example
 ├── .gitignore
 ├── LICENSE
@@ -107,6 +108,7 @@ cp .env.example .env.local   # then add AI_API_KEY (optional)
 npm run dev                  # http://localhost:3000
 npm test                     # run the tests
 npm run typecheck            # TypeScript check
+npm run lint                 # ESLint (next/core-web-vitals)
 npm run build && npm start   # production build
 ```
 
@@ -116,16 +118,34 @@ Click **Try Demo** on the home page (or open `/analyzer?demo=1`). Demo Mode load
 
 ## Deployment
 
-Deploy to Vercel:
+### Which host?
 
-1. Push the project to GitHub.
-2. In Vercel choose **Add New → Project**, and import the repository (Next.js is detected automatically).
-3. Under **Environment Variables**, add `AI_API_KEY` (and optionally the others).
+BugLens AI **cannot run on GitHub Pages**. Pages only serves static files, but this app needs a server-side API route (`/api/analyze`) to keep the AI key secret. **Vercel** is the recommended host: it runs Next.js natively, has a free tier, and deploys automatically from GitHub. No extra configuration file is needed.
+
+### 1. Put the code on GitHub
+
+Create an empty repository on github.com (no README or license), then from the project folder:
+
+```bash
+git init -b main            # skip if the folder is already a git repository
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/<your-username>/buglens-ai.git
+git push -u origin main
+```
+
+`.env` files are git-ignored, so no secrets are uploaded. Check with `git ls-files | grep env` (only `.env.example` should appear).
+
+### 2. Publish with Vercel
+
+1. Sign in at [vercel.com](https://vercel.com) with your GitHub account.
+2. Choose **Add New → Project** and import the `buglens-ai` repository. Next.js is detected automatically.
+3. Under **Environment Variables** add `AI_API_KEY` (and optionally `AI_MODEL`, `MAX_CODE_CHARS`, `RATE_LIMIT_PER_MINUTE`).
 4. Click **Deploy**.
 
-Your public URL appears on the project page in the Vercel dashboard after the deployment finishes (it looks like `https://<project-name>.vercel.app`). You can add a custom domain under **Settings → Domains**.
+When the build finishes, the public URL is shown on the project's page in the Vercel dashboard (shaped like `https://<project-name>.vercel.app`; see **Settings → Domains**). Every later `git push` redeploys automatically. Add the URL to this README once it exists.
 
-Without `AI_API_KEY` the site still works in Demo Mode.
+Without `AI_API_KEY` the deployed site still works in Demo Mode.
 
 ## Security Considerations
 
@@ -148,7 +168,7 @@ Captured from the running app in Demo Mode:
 
 | Analysis result | Mobile |
 | --- | --- |
-| ![Analysis result](docs/screenshots/result.png) | ![Mobile analyzer](docs/screenshots/mobile-home.png) |
+| ![Analysis result](docs/screenshots/result.png) | ![Mobile home](docs/screenshots/mobile-home.png) |
 
 ## Future Improvements
 

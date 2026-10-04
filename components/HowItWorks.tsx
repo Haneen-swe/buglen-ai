@@ -23,7 +23,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" aria-labelledby="how-heading" className="bg-night py-20">
+    <section id="how-it-works" aria-labelledby="how-heading" className="border-t border-slate-brand/25 bg-night/60 py-16">
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Simple by design</p>

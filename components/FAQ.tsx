@@ -25,7 +25,7 @@ export const FAQ_ITEMS = [
 
 export function FAQ() {
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="py-20">
+    <section id="faq" aria-labelledby="faq-heading" className="py-16">
       <div className="container-page max-w-3xl">
         <div className="text-center">
           <p className="eyebrow">Questions</p>

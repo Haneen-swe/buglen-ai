@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQ } from "@/components/FAQ";
+import { HowItWorks } from "@/components/HowItWorks";
 import { BugIcon, GraduationIcon, LightbulbIcon, ShieldIcon, SparkIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -62,9 +63,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="bg-night">
-        <FAQ />
-      </div>
+      <HowItWorks />
+      <FAQ />
     </>
   );
 }

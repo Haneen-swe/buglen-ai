@@ -8,12 +8,14 @@ interface FeatureCardProps {
 
 export function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <article className="card group p-6 transition-colors hover:border-mauve/60">
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-mauve/30 bg-burgundy/60 text-mauve">
+    <article className="flex items-start gap-4 rounded-2xl border border-slate-brand/30 bg-charcoal/50 p-5 transition-colors hover:border-mauve/50">
+      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-burgundy/60 text-mauve">
         {icon}
+      </span>
+      <div>
+        <h3 className="text-base font-semibold text-offwhite">{title}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-offwhite/65">{description}</p>
       </div>
-      <h3 className="text-lg font-semibold text-offwhite">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-offwhite/75">{description}</p>
     </article>
   );
 }
